@@ -54,9 +54,11 @@ You have to implement an abstracted and simple library system.
 
 ### Main tasks
 
+> **Hint:** 
+
 1. Your software should read all data from the given CSV files in a meaningful structure. For the given dataset is for test development/test, we'll run it with a larger dataset.
 
-2. Expose a Rest route to :
+2. Create a GraphQL API that :
  * List all books
  * List all magazines
  * Find a book  by its `isbn`
@@ -64,17 +66,21 @@ You have to implement an abstracted and simple library system.
  * List all `authors`
  * Find all book by their by their `authors`
 
+3. Implement the API on defined on point (2)
+
 ### Optional tasks
 
 > **Hint:** Optional means optional.
 
-1. Write useful Unit tests.
+1. Use MongoDB to store and operate on data
 
-2. Add a route to add a book or a magazine to the data structure of your software
+2. Write useful Unit tests.
 
-3. Add a route to export each resource to CSV
+3. Add a route to add a book or a magazine to the data structure of your software
 
-4. Add a docker to run your server
+4. Add a route to export each resource to CSV
+
+5. Add a docker to run your server
 
 ## Procedure
 
