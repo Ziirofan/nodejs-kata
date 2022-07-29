@@ -1,0 +1,28 @@
+type Book {
+  ipn: String
+  title: String
+  author: String
+  price: Int
+}
+
+type Author {
+  email: String!
+  firstname: String!
+  lastname: String!
+}
+
+extend type Query {
+    authors: [Author]!
+    authorByEmail(email: String!): Author!
+    booksByAuthor(email: String!): [Book]
+}
+
+input NewAuthor {
+  email: String!
+  firstname: String!
+  lastname: String!
+}
+
+extend type Mutation {
+  createAuthor(newAuthor: NewAuthor): Author!
+}

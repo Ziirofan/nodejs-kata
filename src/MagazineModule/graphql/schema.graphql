@@ -1,0 +1,24 @@
+type Magazine {
+  title: String!
+  isbn: String!
+  author: String!
+  publishedAt: Int
+}
+
+extend type Query {
+    magazines: [Magazine]!
+    magazine(id: Int!): Magazine!
+    magazineByName(title: String!): Magazine!
+    magazineByIsbn(isbn: String!): Magazine!
+}
+
+input NewMagazine {
+  title: String!
+  isbn: String!
+  author: String!
+  publishedAt: Int
+}
+
+extend type Mutation {
+  createMagazine(newMagazine: NewMagazine): Magazine!
+}
