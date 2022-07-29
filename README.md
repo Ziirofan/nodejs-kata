@@ -1,3 +1,28 @@
+# Work in Progress
+
+## What is completed
+
+for 2 hours, main goal is complete, software serve data with API graphql.
+example:
+```
+GET http://localhost:3000/graphql?query=query{books { title }}
+result books list
+GET http://localhost:3000/graphql?query=query{bookByIsbn(isbn:"3214-5698-7412") { title }}
+result book data
+```
+Data storage MongoDB
+
+## What is missing
+
+- e2e test of api route with mocha and chai
+- export resource to csv 
+implementation example: use mongoexport to export to csv file then serve file by express with download method.
+- Documentation with comment
+- Use docker: i usually use docker-compose with docker mongo and pm2 docker for node app (with restart and log file).
+- Think about data, data maybe need rework: authors can be store in array 
+
+
+
 # Node.js Kata - Part 1: Library
 
 Code kata in Node.js where you have to write a library of books and magazines.
