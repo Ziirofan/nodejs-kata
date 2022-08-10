@@ -6,7 +6,7 @@ type Book {
 }
 
 extend type Query {
-    books: [Book]!
+    books(title: String, isbn: String, authors: [String]): [Book]
     book(id: Int!): Book!
     bookByName(title: String!): Book!
     bookByIsbn(isbn: String!): Book!

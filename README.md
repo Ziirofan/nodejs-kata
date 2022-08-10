@@ -21,6 +21,9 @@ implementation example: use mongoexport to export to csv file then serve file by
 - Use docker: i usually use docker-compose with docker mongo and pm2 docker for node app (with restart and log file).
 - Think about data, data maybe need rework: authors can be store in array 
 
+## TODO
+- authors and magazine refactor like books
+
 
 
 # Node.js Kata - Part 1: Library

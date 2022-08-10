@@ -1,9 +1,17 @@
 import BookModel from './model/schemaBook.js';
 import { ExceptionNotFound, ExceptionRequestError } from '../utils/errorHandler.js';
 
-export const books = async () => {
+
+export const books = async (title, isbn, authors) => {
     try{
-        const book = await BookModel.find().exec()
+        const query = {}
+        if(title)
+            query.title = title
+        if(isbn)
+            query.isbn = isbn
+        if(authors)
+            query.authors = authors
+        const book = await BookModel.find(query).exec()
         if(book.length === 0){
             throw new ExceptionNotFound("Book not found");
         }
@@ -33,42 +41,15 @@ export const book = async (id) => {
 }
 
 
-export const bookByIsbn = async (isbn) => {
-    try{
-        if(typeof isbn != 'string')
-            throw new ExceptionRequestError("Isbn must be string")
-        
-        const book = await BookModel.findOne({isbn}).exec()
-        if(book.length === 0){
-            throw new ExceptionNotFound("Book not found");
-        }
-        return book;
-    }
-    catch(e){
-        console.error(e);
-        throw e;
-    }
-}
-
-export const booksByAuthor = async (author) => {
-    try{
-        if(typeof author != 'object')
-            throw new ExceptionRequestError("Author must be an object")
-        const book = await BookModel.find({authors: {$regex: author.email}}).exec()
-        if(book.length === 0){
-            throw new ExceptionNotFound("Book not found");
-        }
-        return book;
-    }
-    catch(e){
-        console.error(e);
-        throw e;
-    }
-}
-
 export const createBook = async (bookData) => {
     try{
-        const newBook = new BookModel(bookData);
+        const data = {
+            title: bookData.title,
+            isbn: bookData.isbn,
+            authors: bookData.authors.split(','),
+            description: bookData.description,
+        }
+        const newBook = new BookModel(data);
         const resQuery = await newBook.save()
         return resQuery
     }

@@ -1,5 +1,4 @@
 import AuthorModel from './model/schemaAuthor.js';
-import { booksByAuthor } from '../bookModule/service.js';
 import { ExceptionNotFound, ExceptionRequestError } from '../utils/errorHandler.js';
 
 export const authors = async () => {
@@ -36,7 +35,7 @@ export const authorsBook = async ( email ) => {
         if(!authorId){
             throw new ExceptionNotFound("Author not found");
         }
-        const books = await booksByAuthor(authorId);
+        const books = await books({authorId});
         return books
     }
     catch(e){

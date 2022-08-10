@@ -1,12 +1,11 @@
-import { books, book, bookByIsbn, booksByAuthor, createBook } from "./service.js";
+import { books, book, createBook } from "./service.js";
 
 export const booksResolvers = {
     Query: {
-      books,
-      book: (_, {id}) => book(id),
-      bookByIsbn:(_, {isbn}) => bookByIsbn(isbn)
+      books: ({title}, {isbn}, {authors}) => books(title, isbn, authors),
+      book: ({id}) => book(id),
     },
     Mutation: {
-        createBook: (_, {newBook}) => createBook(newBook)
+        createBook: ({newBook}) => createBook(newBook)
     }
   };
